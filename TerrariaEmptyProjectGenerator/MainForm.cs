@@ -22,6 +22,8 @@ namespace TerrariaEmptyProjectGenerator
 				txtPath.Text = value;
 				if (txtPath.Text.Trim().Length == 0)
 					txtPath.Text = "<Please Select Target Directory>";
+				
+				ValidateInput();
 			}
 		}
 
