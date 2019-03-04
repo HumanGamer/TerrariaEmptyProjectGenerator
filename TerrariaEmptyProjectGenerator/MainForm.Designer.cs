@@ -34,7 +34,7 @@
 			this.txtID = new System.Windows.Forms.TextBox();
 			this.lblName = new System.Windows.Forms.Label();
 			this.lblID = new System.Windows.Forms.Label();
-			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.pbMain = new System.Windows.Forms.ProgressBar();
 			this.chkAutoID = new System.Windows.Forms.CheckBox();
 			this.txtPath = new System.Windows.Forms.TextBox();
 			this.lblPath = new System.Windows.Forms.Label();
@@ -104,14 +104,14 @@
 			this.lblID.TabIndex = 5;
 			this.lblID.Text = "ID:";
 			// 
-			// progressBar1
+			// pbMain
 			// 
-			this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.pbMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.progressBar1.Location = new System.Drawing.Point(15, 96);
-			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(447, 23);
-			this.progressBar1.TabIndex = 4;
+			this.pbMain.Location = new System.Drawing.Point(15, 96);
+			this.pbMain.Name = "pbMain";
+			this.pbMain.Size = new System.Drawing.Size(447, 23);
+			this.pbMain.TabIndex = 4;
 			// 
 			// chkAutoID
 			// 
@@ -169,7 +169,7 @@
 			this.Controls.Add(this.lblPath);
 			this.Controls.Add(this.txtPath);
 			this.Controls.Add(this.chkAutoID);
-			this.Controls.Add(this.progressBar1);
+			this.Controls.Add(this.pbMain);
 			this.Controls.Add(this.lblID);
 			this.Controls.Add(this.lblName);
 			this.Controls.Add(this.txtID);
@@ -195,7 +195,7 @@
 		private System.Windows.Forms.TextBox txtID;
 		private System.Windows.Forms.Label lblName;
 		private System.Windows.Forms.Label lblID;
-		private System.Windows.Forms.ProgressBar progressBar1;
+		private System.Windows.Forms.ProgressBar pbMain;
 		private System.Windows.Forms.CheckBox chkAutoID;
 		private System.Windows.Forms.TextBox txtPath;
 		private System.Windows.Forms.Label lblPath;
