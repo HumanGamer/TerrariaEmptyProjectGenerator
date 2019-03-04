@@ -191,8 +191,12 @@ namespace TerrariaEmptyProjectGenerator
 			if (!Directory.Exists(BaseDirectory))
 				Directory.CreateDirectory(BaseDirectory);
 
-			// TODO: Generate
-			MessageBox.Show(this, "TODO: Generate Project", "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			Generator generator = new Generator(txtPath.Text, txtName.Text, txtID.Text);
+			generator.Generate();
+
+			MessageBox.Show(this, "Generation Done!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			Application.Exit();
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
