@@ -22,7 +22,7 @@ namespace TerrariaEmptyProjectGenerator
 			{
 				mainForm.BaseDirectory = Path.GetFullPath(args[0]);
 			}
-			else if (!Utils.IsRunningInAppDirectory())
+			else// if (!Utils.IsRunningInAppDirectory())
 			{
 				mainForm.BaseDirectory = Environment.CurrentDirectory;
 			}
