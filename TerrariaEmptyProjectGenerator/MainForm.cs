@@ -77,7 +77,7 @@ namespace TerrariaEmptyProjectGenerator
 				return;
 			}
 
-			if (!char.IsLetter(id[0]))
+			if (id[0] != '_' && !char.IsLetter(id[0]))
 				id = "_" + id;
 			else
 				id = char.ToUpper(id[0]) + id.Substring(1);
@@ -153,6 +153,7 @@ namespace TerrariaEmptyProjectGenerator
 				Directory.CreateDirectory(BaseDirectory);
 
 			// TODO: Generate
+			MessageBox.Show(this, "TODO: Generate Project", "DEBUG", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)

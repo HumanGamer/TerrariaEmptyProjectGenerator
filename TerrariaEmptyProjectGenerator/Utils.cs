@@ -12,6 +12,10 @@ namespace TerrariaEmptyProjectGenerator
 	{
 		public static bool IsValidPath(string path)
 		{
+			path = path.Trim();
+			if (path.Length == 0)
+				return false;
+
 			Regex driveCheck = new Regex(@"^[a-zA-Z]:\\$");
 			if (!driveCheck.IsMatch(path.Substring(0, 3))) return false;
 			string strTheseAreInvalidFileNameChars = new string(Path.GetInvalidPathChars());
@@ -43,11 +47,26 @@ namespace TerrariaEmptyProjectGenerator
 
 		public static bool IsValidName(string name)
 		{
+			name = name.Trim();
+			if (name.Length == 0)
+				return false;
 			return true;
 		}
 
 		public static bool IsValidID(string id)
 		{
+			id = id.Trim();
+			if (id.Length == 0)
+				return false;
+			if (id[0] != '_' && !char.IsLetter(id[0]))
+				return false;
+
+			foreach (var c in id)
+			{
+				if (c != '_' && !char.IsLetterOrDigit(c))
+					return false;
+			}
+
 			return true;
 		}
 	}
