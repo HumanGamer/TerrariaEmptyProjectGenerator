@@ -8,7 +8,8 @@ using System.Windows.Forms;
 
 namespace TerrariaEmptyProjectGenerator
 {
-	public class Program
+
+	public static class Program
 	{
 		[STAThread]
 		public static void Main(string[] args)
@@ -21,7 +22,7 @@ namespace TerrariaEmptyProjectGenerator
 			{
 				mainForm.BaseDirectory = Path.GetFullPath(args[0]);
 			}
-			else
+			else if (!Utils.IsRunningInAppDirectory())
 			{
 				mainForm.BaseDirectory = Environment.CurrentDirectory;
 			}

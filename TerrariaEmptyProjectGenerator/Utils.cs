@@ -10,6 +10,34 @@ namespace TerrariaEmptyProjectGenerator
 {
 	public static class Utils
 	{
+		public static bool DoPathsEqual(string path1, string path2)
+		{
+			if (path1 == null && path2 == null)
+				return true;
+
+			if (path1 == null)
+				return false;
+
+			if (path2 == null)
+				return false;
+
+			path1 = Path.GetFullPath(path1.Trim()).Replace("\\", "/");
+			path2 = Path.GetFullPath(path2.Trim()).Replace("\\", "/");
+
+			if (path1.EndsWith("/"))
+				path1 = path1.Substring(0, path1.Length - 1);
+			
+			if (path2.EndsWith("/"))
+				path2 = path2.Substring(0, path2.Length - 1);
+
+			return path1.Equals(path2, StringComparison.OrdinalIgnoreCase);
+		}
+
+		public static bool IsRunningInAppDirectory()
+		{
+			return DoPathsEqual(Environment.CurrentDirectory, AppDomain.CurrentDomain.BaseDirectory);
+		}
+
 		public static bool IsValidPath(string path)
 		{
 			path = path.Trim();
@@ -58,12 +86,12 @@ namespace TerrariaEmptyProjectGenerator
 			id = id.Trim();
 			if (id.Length == 0)
 				return false;
-			if (id[0] != '_' && !char.IsLetter(id[0]))
+			if (id[0] != '_' && !Char.IsLetter(id[0]))
 				return false;
 
 			foreach (var c in id)
 			{
-				if (c != '_' && !char.IsLetterOrDigit(c))
+				if (c != '_' && !Char.IsLetterOrDigit(c))
 					return false;
 			}
 
