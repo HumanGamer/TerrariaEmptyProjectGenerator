@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.btnGenerate = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.txtName = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@
 			this.picPath = new System.Windows.Forms.PictureBox();
 			this.picName = new System.Windows.Forms.PictureBox();
 			this.picID = new System.Windows.Forms.PictureBox();
+			this.ttErrors = new System.Windows.Forms.ToolTip(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.picPath)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picName)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.picID)).BeginInit();
@@ -166,30 +168,36 @@
 			// 
 			// picPath
 			// 
+			this.picPath.Cursor = System.Windows.Forms.Cursors.Help;
 			this.picPath.Location = new System.Drawing.Point(458, 12);
 			this.picPath.Name = "picPath";
 			this.picPath.Size = new System.Drawing.Size(20, 20);
 			this.picPath.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.picPath.TabIndex = 10;
 			this.picPath.TabStop = false;
+			this.picPath.MouseHover += new System.EventHandler(this.picPath_MouseHover);
 			// 
 			// picName
 			// 
+			this.picName.Cursor = System.Windows.Forms.Cursors.Help;
 			this.picName.Location = new System.Drawing.Point(458, 38);
 			this.picName.Name = "picName";
 			this.picName.Size = new System.Drawing.Size(20, 20);
 			this.picName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.picName.TabIndex = 11;
 			this.picName.TabStop = false;
+			this.picName.MouseHover += new System.EventHandler(this.picName_MouseHover);
 			// 
 			// picID
 			// 
+			this.picID.Cursor = System.Windows.Forms.Cursors.Help;
 			this.picID.Location = new System.Drawing.Point(458, 64);
 			this.picID.Name = "picID";
 			this.picID.Size = new System.Drawing.Size(20, 20);
 			this.picID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.picID.TabIndex = 12;
 			this.picID.TabStop = false;
+			this.picID.MouseHover += new System.EventHandler(this.picID_MouseHover);
 			// 
 			// MainForm
 			// 
@@ -242,5 +250,6 @@
 		private System.Windows.Forms.PictureBox picPath;
 		private System.Windows.Forms.PictureBox picName;
 		private System.Windows.Forms.PictureBox picID;
+		private System.Windows.Forms.ToolTip ttErrors;
 	}
 }

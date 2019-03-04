@@ -29,6 +29,24 @@ namespace TerrariaEmptyProjectGenerator
 
 		protected Image InvalidImage => global::TerrariaEmptyProjectGenerator.Properties.Resources.invalid;
 
+		protected string PathError
+		{
+			get;
+			private set;
+		}
+
+		protected string NameError
+		{
+			get;
+			private set;
+		}
+
+		protected string IDError
+		{
+			get;
+			private set;
+		}
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -51,6 +69,10 @@ namespace TerrariaEmptyProjectGenerator
 			if (!Utils.IsValidID(txtID.Text))
 				idError = "Invalid ID";
 
+			PathError = pathError;
+			NameError = nameError;
+			IDError = idError;
+
 			if (pathError == null && nameError == null && idError == null)
 			{
 				picPath.Image = ValidImage;
@@ -66,6 +88,21 @@ namespace TerrariaEmptyProjectGenerator
 				picName.Image = nameError == null ? ValidImage : InvalidImage;
 				picID.Image = idError == null ? ValidImage : InvalidImage;
 			}
+		}
+
+		private void picPath_MouseHover(object sender, EventArgs e)
+		{
+			ttErrors.SetToolTip(picPath, PathError ?? "Valid Path");
+		}
+
+		private void picName_MouseHover(object sender, EventArgs e)
+		{
+			ttErrors.SetToolTip(picName, NameError ?? "Valid Name");
+		}
+
+		private void picID_MouseHover(object sender, EventArgs e)
+		{
+			ttErrors.SetToolTip(picID, IDError ?? "Valid ID");
 		}
 
 		private void _generateIDFromName()
