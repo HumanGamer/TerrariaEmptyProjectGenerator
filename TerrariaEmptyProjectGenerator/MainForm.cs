@@ -25,9 +25,15 @@ namespace TerrariaEmptyProjectGenerator
 			}
 		}
 
+		protected Image ValidImage => global::TerrariaEmptyProjectGenerator.Properties.Resources.valid;
+
+		protected Image InvalidImage => global::TerrariaEmptyProjectGenerator.Properties.Resources.invalid;
+
 		public MainForm()
 		{
 			InitializeComponent();
+
+			ValidateInput();
 		}
 
 		private void ValidateInput()
@@ -47,12 +53,18 @@ namespace TerrariaEmptyProjectGenerator
 
 			if (pathError == null && nameError == null && idError == null)
 			{
+				picPath.Image = ValidImage;
+				picName.Image = ValidImage;
+				picID.Image = ValidImage;
 				btnGenerate.Enabled = true;
 			}
 			else
 			{
 				btnGenerate.Enabled = false;
-				// TODO: Display Errors
+				
+				picPath.Image = pathError == null ? ValidImage : InvalidImage;
+				picName.Image = nameError == null ? ValidImage : InvalidImage;
+				picID.Image = idError == null ? ValidImage : InvalidImage;
 			}
 		}
 
@@ -67,6 +79,8 @@ namespace TerrariaEmptyProjectGenerator
 
 			if (!char.IsLetter(id[0]))
 				id = "_" + id;
+			else
+				id = char.ToUpper(id[0]) + id.Substring(1);
 
 			StringBuilder sb = new StringBuilder();
 			foreach (var c in id)
