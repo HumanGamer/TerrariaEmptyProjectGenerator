@@ -21,6 +21,10 @@ namespace TerrariaEmptyProjectGenerator
 			{
 				mainForm.BaseDirectory = Path.GetFullPath(args[0]);
 			}
+			else
+			{
+				mainForm.BaseDirectory = Environment.CurrentDirectory;
+			}
 
 			Application.Run(mainForm);
 		}
