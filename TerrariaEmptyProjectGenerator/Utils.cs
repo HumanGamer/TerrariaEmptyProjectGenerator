@@ -38,12 +38,41 @@ namespace TerrariaEmptyProjectGenerator
 			return DoPathsEqual(Environment.CurrentDirectory, AppDomain.CurrentDomain.BaseDirectory);
 		}
 
-		public static bool IsValidPath(string path)
+		public enum Platform
 		{
-			path = path.Trim();
-			if (path.Length == 0)
-				return false;
+			Windows,
+			Unix,
+			Mac,
+			Unknown
+		}
 
+		public static Platform GetPlatform()
+		{
+			switch (Environment.OSVersion.Platform)
+			{
+				case PlatformID.Win32S:
+				case PlatformID.Win32Windows:
+				case PlatformID.Win32NT:
+				case PlatformID.WinCE:
+				case PlatformID.Xbox: // Xbox is just Windows with a different shell
+					return Platform.Windows;
+				case PlatformID.Unix:
+					return Platform.Unix;
+				case PlatformID.MacOSX:
+					return Platform.Mac;
+				default:
+					return Platform.Unknown;
+			}
+		}
+
+		private static bool IsValidPathUnix(string path)
+		{
+			// TODO: Improve Later
+			return !string.IsNullOrWhiteSpace(path) && path.StartsWith("/");
+		}
+
+		private static bool IsValidPathWindows(string path)
+		{
 			Regex driveCheck = new Regex(@"^[a-zA-Z]:\\$");
 			if (!driveCheck.IsMatch(path.Substring(0, 3))) return false;
 			string strTheseAreInvalidFileNameChars = new string(Path.GetInvalidPathChars());
@@ -53,6 +82,19 @@ namespace TerrariaEmptyProjectGenerator
 				return false;
 
 			return true;
+		}
+
+		public static bool IsValidPath(string path)
+		{
+			path = path.Trim();
+			if (path.Length == 0)
+				return false;
+
+			Platform platform = GetPlatform();
+			if (platform == Platform.Windows)
+				return IsValidPathWindows(path);
+
+			return IsValidPathUnix(path);
 		}
 
 		public static bool IsValidDirectoryPath(string path)
